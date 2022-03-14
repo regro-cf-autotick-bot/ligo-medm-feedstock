@@ -23,7 +23,7 @@ source:
     # - no-macports.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or osx]
 
 requirements:
@@ -48,6 +48,9 @@ requirements:
     - xorg-libxmu  # [unix]
     - xorg-libxp  # [unix]
     - xorg-libxt  # [unix]
+  run_constrained:
+    # this package conflicts with epics-medm
+    - epics-medm >9999
 
 test:
   commands:
