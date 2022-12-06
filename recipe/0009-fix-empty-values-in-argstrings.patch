@@ -1,0 +1,18 @@
+diff --git a/medm/utils.c b/medm/utils.c
+index f113ba9..bc4377d 100644
+--- a/medm/utils.c
++++ b/medm/utils.c
+@@ -3290,11 +3290,9 @@ NameValueTable *generateNameValueTable(char *argsString, int *numNameValues)
+ 	      /* name = value, name = value, ...  therefore */
+ 	      /* name delimited by "=" and value delimited by ","  */
+ 		s1 = copyOfArgsString;
+-	    } else {
+-		s1 = NULL;
+ 	    }
+-	    name = strtok(s1,"=");
+-	    value = strtok(NULL,",");
++	    name = strsep(&s1,"=");
++	    value = strsep(&s1,",");
+ 	    if(name != NULL && value != NULL) {
+ 	      /* found legitimate name/value pair, put in table */
+ 		j = 0;
