@@ -1,5 +1,5 @@
 {% set name = "MEDM" %}
-{% set version = "3_1_17" %}
+{% set version = "3_1_19" %}
 
 package:
   name: ligo-{{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/epics-extensions/medm/archive/MEDM{{ version }}.tar.gz
-  sha256: 0f44ee01f3ad487ac8a72e258708b9b46d277b61af299b79cd3571a3d5a657c5
+  sha256: 7e752c3a3b099cb8c396f54c245bde55aacdf58c056ef11b7c9e6500849f724c
 
   patches:
     - 0000-medm3_1_7_long_string.patch
@@ -24,12 +24,13 @@ source:
     # - no-macports.patch  # [osx]
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win or osx]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - make
   host:
@@ -61,7 +62,7 @@ about:
   home: https://epics.anl.gov/extensions/medm/
   dev_url: https://github.com/epics-extensions/medm/
   doc_url: https://epics.anl.gov/EpicsDocumentation/ExtensionsManuals/MEDM/MEDM.html
-  license:  EPICS
+  license: EPICS
   license_file: LICENSE
   summary: Motif Editor and Display Manager
   description: |
